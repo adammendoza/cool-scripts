@@ -1,4 +1,4 @@
 hairy-dangerzone
 ================
 
-Implementation of the monty hall problem for python 3
+Implementation of the monty hall problem. Live at http://amorhabendi.com/monty.
