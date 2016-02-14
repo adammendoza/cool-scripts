@@ -68,11 +68,6 @@ def load_video(video):
         print("Failed to load video.")
         sys.exit(1)
     fps = cap.get(cv2.CAP_PROP_FPS)
-    print "Fps float: ", fps
-    print type(fps)
-    fps = int(fps)
-    print "Fps int: ", fps
-    
     return cap, fps
 
 def frames_to_png(cap, brightness):
@@ -100,8 +95,6 @@ def frames_to_png(cap, brightness):
 def png_to_mp4(framerate):
 
     framerate = str(framerate)
-    print "Framerate: ", framerate
-    framerate = "30"
     
     args = ["ffmpeg",
         "-framerate", framerate,
