@@ -123,7 +123,6 @@ def make_avi():
 
     try:
         p = subprocess.call(args)
-        print p
     except:
         print("Failed to make avi.")
         sys.exit(1)
