@@ -47,8 +47,8 @@ def create_tempdir():
     except OSError, e:
         print(e)
 
+
 def extract_audio(input_name):
-    
     args = ['ffmpeg',
         '-i', '{}'.format(input_name),
         '-ab', '160k', 
@@ -62,6 +62,7 @@ def extract_audio(input_name):
         print("Failed to extract audio.")
         sys.exit(1)
 
+
 def load_video(video):
     cap = cv2.VideoCapture(video)
     if not cap:
@@ -69,6 +70,7 @@ def load_video(video):
         sys.exit(1)
     fps = cap.get(cv2.CAP_PROP_FPS)
     return cap, fps
+
 
 def frames_to_png(cap, brightness):
     f = 0
@@ -92,8 +94,8 @@ def frames_to_png(cap, brightness):
             break
     cap.release()
 
-def png_to_mp4(framerate):
 
+def png_to_mp4(framerate):
     framerate = str(framerate)
     
     args = ["ffmpeg",
@@ -110,8 +112,8 @@ def png_to_mp4(framerate):
         print("Failed to convert pngs to mp4.")
         sys.exit(1)
 
+
 def make_avi():
-    
     args = [
         "ffmpeg",
         "-i","./temp/0vid.mp4",
@@ -127,8 +129,8 @@ def make_avi():
         print("Failed to make avi.")
         sys.exit(1)
 
-def make_mp4():
 
+def make_mp4():
     args = [
         "ffmpeg",
         "-i","{}avi".format(output_name[:-3]),
@@ -145,11 +147,13 @@ def make_mp4():
         print("Failed to make mp4.")
         sys.exit(1)
 
+
 def cleanup():
     try:
         shutil.rmtree('./temp')
     except:
         print("Failed to clean up temp directory.")
+
 
 def main():
     create_tempdir()
@@ -162,6 +166,7 @@ def main():
         make_mp4()
         os.remove('{}avi'.format(output_name[:-3]))
     cleanup()
+
 
 if __name__ == '__main__':
     main()
