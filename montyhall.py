@@ -1,4 +1,3 @@
-#! /bin/python
 import random
 runs = int(1000)
 changed = 0
